@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.sql": "jinja-sql"
+    },
+    "dbt.queryLimit": 500,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+}

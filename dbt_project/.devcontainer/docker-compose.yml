@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  sql_saturday_dbt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace
+      - $HOME/.aws:/root/.aws
+    environment:
+      - DBT_PASSWORD=password
+      - DBT_USER=postgres
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    ports:  
+      - 5000:5000
+    networks:
+      - sql-saturday
+  sql_saturday_db:
+    image: postgres:latest
+    container_name: sql_saturday_db
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+    networks:
+      - sql-saturday
+  
+networks:
+  sql-saturday:

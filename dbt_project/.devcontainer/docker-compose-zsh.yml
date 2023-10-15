@@ -1,0 +1,7 @@
+services:
+  sql_saturday_dbt:
+    volumes:
+      - $HOME/.oh-my-zsh/:/root/.oh-my-zsh
+      - $HOME/.p10k.zsh:/root/.p10k.zsh
+      - $HOME/.zshrc:/root/.zshrc
+      - $HOME/.ssh/:/root/.ssh

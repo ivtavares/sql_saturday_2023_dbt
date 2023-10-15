@@ -1,0 +1,17 @@
+jaffle_shop:
+  target: databricks
+  outputs:
+    local:
+      type: postgres
+      host: sql_saturday_db
+      user:  "{{ env_var('DBT_USER') }}"
+      password:  "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      dbname: postgres # or database instead of dbname
+      schema: jaffle_shop
+    databricks:
+      type: databricks
+      schema: default
+      host: "{{ env_var('DBT_HOST') }}"
+      http_path: "{{env_var('DBT_PATH') }}"
+      token: "{{ env_var('DBT_TOKEN') }}"
