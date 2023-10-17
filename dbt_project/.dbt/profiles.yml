@@ -8,10 +8,10 @@ jaffle_shop:
       password:  "{{ env_var('DBT_PASSWORD') }}"
       port: 5432
       dbname: postgres # or database instead of dbname
-      schema: jaffle_shop
+      schema: bronze
     databricks:
       type: databricks
-      schema: default
+      schema: bronze
       host: "{{ env_var('DBT_HOST') }}"
       http_path: "{{env_var('DBT_PATH') }}"
       token: "{{ env_var('DBT_TOKEN') }}"

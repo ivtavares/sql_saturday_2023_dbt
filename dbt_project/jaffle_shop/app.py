@@ -3,12 +3,9 @@ from functools import partial
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 from flask import Flask
 
-# initialize
-# https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup
-# https://docs.getdbt.com/reference/programmatic-invocations
-
 
 def dbt_run_args(*cli_args: str):
+    # initialize
     dbt = dbtRunner()
 
     # create CLI args as a list of strings
