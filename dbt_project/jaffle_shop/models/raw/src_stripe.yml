@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: stripe
+    schema: bronze
+    tables:
+      - name: raw_payments
+        loaded_at_field: created
+        freshness:
+          warn_after:
+            count: 12
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+        description: Raw payments data
+        columns:
+          - name: id
+            description: Primary key for payments
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: Foreign key to jaffle_shop.orders.id
+            tests:
+              - relationships:
+                  to: source('jaffle_shop', 'orders')
+                  field: id
+          - name: payment_method
+            tests:
+              - accepted_values:
+                  values:
+                    - 'credit_card'
+                    - 'coupon'
+                    - 'bank_transfer'
+                    - 'gift_card'
+
