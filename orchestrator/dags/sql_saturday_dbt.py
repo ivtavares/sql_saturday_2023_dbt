@@ -72,4 +72,3 @@ with DAG("sql-saturday-dbt",
     
     generate_container_name_tsk >> start_container_tsk >> dbt_run_tsk >> dbt_test_tsk  >> stop_container_tsk >> test_dbt_status_tsk
     dbt_run_tsk >> stop_container_tsk >> test_dbt_status_tsk
-    
